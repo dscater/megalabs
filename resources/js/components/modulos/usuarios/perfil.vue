@@ -41,7 +41,7 @@
                                 </p>
                                 <label
                                     v-if="!imagen_cargada"
-                                    class="btn btn-primary bg-lightblue btn-block"
+                                    class="btn btn-primary bg-primary btn-block"
                                     for="file_foto"
                                     ><b>Cambiar foto</b
                                     ><input
@@ -54,7 +54,7 @@
                                 <template v-else>
                                     <el-button
                                         type="warning"
-                                        class="bg-lightblue w-full btn-flat mb-1"
+                                        class="bg-primary w-full btn-flat mb-1"
                                         :loading="enviandoFoto"
                                         @click="setFoto"
                                         >Enviar cambios</el-button
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="card card-primary" v-if="oUsuario.id != 1">
-                            <div class="card-header bg-lightblue">
+                            <div class="card-header bg-primary">
                                 <h3 class="card-title">Información</h3>
                             </div>
 
@@ -131,7 +131,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="card">
-                            <div class="card-header p-2 bg-lightblue">
+                            <div class="card-header p-2 bg-primary">
                                 <div class="col-md-12">
                                     <h4>Actualizar contreña</h4>
                                 </div>
@@ -262,8 +262,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <el-button
-                                                        type="primary"
-                                                        class="bg-lightblue w-full"
+                                                        type="success"
+                                                        class="bg-primary w-full"
                                                         :loading="enviando"
                                                         @click="setPassword"
                                                         >Enviar
