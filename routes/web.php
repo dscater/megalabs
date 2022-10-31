@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MaestroRegistroController;
 use App\Http\Controllers\NotaController;
+use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\SeguimientoAprobadoController;
 use App\Http\Controllers\SeguimientoRectificacionController;
@@ -51,11 +53,13 @@ Route::prefix('admin')->group(function () {
     ]);
 
     // SEGUIMIENTO TRAMITES
+    Route::post('seguimiento_tramites/archivo/{seguimiento_tramite}', [SeguimientoTramiteController::class, 'archivo']);
     Route::resource('seguimiento_tramites', SeguimientoTramiteController::class)->only([
         'index', 'store', 'update', 'destroy', 'show'
     ]);
 
     // SEGUIMIENTO TRAMITES APROBADOS
+    Route::post('seguimiento_aprobados/archivo/{seguimiento_aprobado}', [SeguimientoAprobadoController::class, 'archivo']);
     Route::resource('seguimiento_aprobados', SeguimientoAprobadoController::class)->only([
         'index', 'store', 'update', 'destroy', 'show'
     ]);
@@ -66,12 +70,28 @@ Route::prefix('admin')->group(function () {
     ]);
 
     // NOTAS
+    Route::post('notas/archivo/{nota}', [NotaController::class, 'archivo']);
     Route::resource('notas', NotaController::class)->only([
+        'index', 'store', 'update', 'destroy', 'show'
+    ]);
+
+    // NOTIFICACIONES
+    Route::post('notificacions/archivo/{notificacion}', [NotificacionController::class, 'archivo']);
+    Route::resource('notificacions', NotificacionController::class)->only([
+        'index', 'store', 'update', 'destroy', 'show'
+    ]);
+
+    // ALERTAS
+    Route::resource('alertas', AlertaController::class)->only([
         'index', 'store', 'update', 'destroy', 'show'
     ]);
 
     // REPORTES
     Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
+    Route::post('reportes/maestro_registro', [ReporteController::class, 'maestro_registro']);
+    Route::post('reportes/seguimiento_tramites', [ReporteController::class, 'seguimiento_tramites']);
+    Route::post('reportes/seguimiento_aprobados', [ReporteController::class, 'seguimiento_aprobados']);
+    Route::post('reportes/seguimiento_rectificaciones', [ReporteController::class, 'seguimiento_rectificaciones']);
 });
 
 // ---------------------------------------

@@ -215,4 +215,10 @@ class SeguimientoTramiteController extends Controller
             'msj' => 'El registro se eliminó de forma correcta',
         ], 200);
     }
+
+
+    public function archivo(SeguimientoTramite $seguimiento_tramite, Request $request)
+    {
+        return response()->download(public_path() . "/files/" . $seguimiento_tramite[$request->archivo], $seguimiento_tramite[$request->archivo]);
+    }
 }

@@ -86,13 +86,18 @@ class SeguimientoAprobadoController extends Controller
     public function destroy(SeguimientoAprobado $seguimiento_aprobado)
     {
         $antiguo = $seguimiento_aprobado->archivo;
-            if ($antiguo) {
-                \File::delete(public_path() . "/files/" . $antiguo);
-            }
+        if ($antiguo) {
+            \File::delete(public_path() . "/files/" . $antiguo);
+        }
         $seguimiento_aprobado->delete();
         return response()->JSON([
             'sw' => true,
             'msj' => 'El registro se eliminó de forma correcta',
         ], 200);
+    }
+
+    public function archivo(SeguimientoAprobado $seguimiento_aprobado)
+    {
+        return response()->download(public_path() . "/files/" . $seguimiento_aprobado->archivo, $seguimiento_aprobado->archivo);
     }
 }

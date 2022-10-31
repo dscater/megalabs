@@ -23,4 +23,9 @@ class MaestroRegistro extends Model
         "atq", "condicion_almacenamiento", "linea_estucheria", "fecha_inicio_comercializacion",
         "producto_licitacion", "fecha_registro",
     ];
+
+    public function alertas()
+    {
+        return $this->hasMany(Alerta::class, 'maestro_registro_id');
+    }
 }

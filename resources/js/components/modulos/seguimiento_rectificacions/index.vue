@@ -490,7 +490,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.user);
         this.loadingWindow.close();
         this.getSeguimientoRectificacions();
     },

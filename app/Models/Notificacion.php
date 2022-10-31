@@ -13,4 +13,11 @@ class Notificacion extends Model
         "maestro_registro_id", "referencia", "descripcion", "archivo", "fecha",
         "fecha_registro",
     ];
+
+    protected $with = ["maestro_registro"];
+
+    public function maestro_registro()
+    {
+        return $this->belongsTo(MaestroRegistro::class, 'maestro_registro_id');
+    }
 }

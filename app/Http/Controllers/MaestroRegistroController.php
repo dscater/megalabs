@@ -69,7 +69,9 @@ class MaestroRegistroController extends Controller
             $diff = $date1->diff($date2);
             $maestro_registro->dias_vencer = $diff->days;
             $maestro_registro->save();
+            LoginController::setAlertas();
         }
+
 
         return response()->JSON([
             'sw' => true,
@@ -93,6 +95,7 @@ class MaestroRegistroController extends Controller
             $diff = $date1->diff($date2);
             $maestro_registro->dias_vencer = $diff->days;
             $maestro_registro->save();
+            LoginController::setAlertas();
         }
 
         return response()->JSON([

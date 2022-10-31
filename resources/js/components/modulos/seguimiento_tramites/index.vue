@@ -370,7 +370,16 @@
                                                                         ''
                                                                 "
                                                             >
-                                                                <a href=""
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'cpp_archivo'
+                                                                        )
+                                                                    "
                                                                     >Descargar</a
                                                                 >
                                                             </b-col>
@@ -443,7 +452,16 @@
                                                                         ''
                                                                 "
                                                             >
-                                                                <a href=""
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'muestra_archivo'
+                                                                        )
+                                                                    "
                                                                     >Descargar</a
                                                                 >
                                                             </b-col>
@@ -516,7 +534,16 @@
                                                                         ''
                                                                 "
                                                             >
-                                                                <a href=""
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'desplegado_archivo'
+                                                                        )
+                                                                    "
                                                                     >Descargar</a
                                                                 >
                                                             </b-col>
@@ -589,7 +616,16 @@
                                                                         ''
                                                                 "
                                                             >
-                                                                <a href=""
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'gmp_archivo'
+                                                                        )
+                                                                    "
                                                                     >Descargar</a
                                                                 >
                                                             </b-col>
@@ -662,7 +698,16 @@
                                                                         ''
                                                                 "
                                                             >
-                                                                <a href=""
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'rl_archivo'
+                                                                        )
+                                                                    "
                                                                     >Descargar</a
                                                                 >
                                                             </b-col>
@@ -839,7 +884,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.user);
         this.loadingWindow.close();
         this.getSeguimientoTramites();
     },
@@ -972,6 +1016,39 @@ export default {
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");
+        },
+        descargarArchivo(id, key) {
+            let config = {
+                responseType: "blob",
+            };
+            axios
+                .post(
+                    "/admin/seguimiento_tramites/archivo/" + id,
+                    { archivo: key },
+                    config
+                )
+                .then((res) => {
+                    console.log(res);
+                    let nom = res.headers["content-disposition"].split("=");
+                    var fileURL = window.URL.createObjectURL(
+                        new Blob([res.data])
+                    );
+                    var fileLink = document.createElement("a");
+
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute("download", nom[1]);
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                })
+                .catch(async (error) => {
+                    console.log(error);
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    this.enviando = false;
+                    if (error.response) {
+                    }
+                });
         },
     },
 };

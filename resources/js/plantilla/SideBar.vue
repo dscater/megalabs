@@ -86,9 +86,12 @@
                             permisos.includes('maestro_registros.index') ||
                             permisos.includes('seguimiento_tramites.index') ||
                             permisos.includes('seguimiento_aprobados.index') ||
-                            permisos.includes('seguimiento_rectificacions.index') ||
+                            permisos.includes(
+                                'seguimiento_rectificacions.index'
+                            ) ||
                             permisos.includes('notas.index') ||
-                            permisos.includes('notas.index') ||
+                            permisos.includes('notificacions.index') ||
+                            permisos.includes('alertas.index') ||
                             permisos.includes('configuracion.index')
                         "
                     >
@@ -130,7 +133,7 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list-alt"></i>
+                            <i class="nav-icon fas fa-book"></i>
                             <p>Seguimiento de Trámites</p>
                         </router-link>
                     </li>
@@ -143,20 +146,24 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list-alt"></i>
+                            <i class="nav-icon fas fa-book"></i>
                             <p>Seguimiento de T. Aprobados</p>
                         </router-link>
                     </li>
                     <li
                         class="nav-item"
-                        v-if="permisos.includes('seguimiento_rectificacions.index')"
+                        v-if="
+                            permisos.includes(
+                                'seguimiento_rectificacions.index'
+                            )
+                        "
                     >
                         <router-link
                             :to="{ name: 'seguimiento_rectificacions.index' }"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list-alt"></i>
+                            <i class="nav-icon fas fa-book"></i>
                             <p>Seguimiento de T. Rectificación</p>
                         </router-link>
                     </li>
@@ -169,8 +176,34 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list-alt"></i>
+                            <i class="nav-icon fas fa-clipboard"></i>
                             <p>Notas</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('notificacions.index')"
+                    >
+                        <router-link
+                            :to="{ name: 'notificacions.index' }"
+                            class="nav-link"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                        >
+                            <i class="nav-icon fas fa-exclamation-triangle"></i>
+                            <p>Notificaciones</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('alertas.index')"
+                    >
+                        <router-link
+                            :to="{ name: 'alertas.index' }"
+                            class="nav-link"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                        >
+                            <i class="nav-icon fas fa-bell"></i>
+                            <p>Alertas</p>
                         </router-link>
                     </li>
                     <li
@@ -189,8 +222,16 @@
                         class="nav-header"
                         v-if="
                             permisos.includes('reportes.usuarios') ||
-                            permisos.includes('reportes.clientes') ||
-                            permisos.includes('reportes.ingresos_egresos')
+                            permisos.includes('reportes.maestro_registro') ||
+                            permisos.includes(
+                                'reportes.seguimiento_tramites'
+                            ) ||
+                            permisos.includes(
+                                'reportes.seguimiento_aprobados'
+                            ) ||
+                            permisos.includes(
+                                'reportes.seguimiento_rectificaciones'
+                            )
                         "
                     >
                         REPORTES
@@ -205,6 +246,64 @@
                         >
                             <i class="fas fa-file-pdf nav-icon"></i>
                             <p>Lista de Usuarios</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('reportes.maestro_registro')"
+                    >
+                        <router-link
+                            :to="{ name: 'reportes.maestro_registro' }"
+                            class="nav-link"
+                        >
+                            <i class="fas fa-file-pdf nav-icon"></i>
+                            <p>Lista de Maestro de Registro</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="
+                            permisos.includes('reportes.seguimiento_tramites')
+                        "
+                    >
+                        <router-link
+                            :to="{ name: 'reportes.seguimiento_tramites' }"
+                            class="nav-link"
+                        >
+                            <i class="fas fa-file-pdf nav-icon"></i>
+                            <p>Lista de Seguimiento de Trámites</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="
+                            permisos.includes('reportes.seguimiento_aprobados')
+                        "
+                    >
+                        <router-link
+                            :to="{ name: 'reportes.seguimiento_aprobados' }"
+                            class="nav-link"
+                        >
+                            <i class="fas fa-file-pdf nav-icon"></i>
+                            <p>S. de T. Aprobados</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="
+                            permisos.includes(
+                                'reportes.seguimiento_rectificaciones'
+                            )
+                        "
+                    >
+                        <router-link
+                            :to="{
+                                name: 'reportes.seguimiento_rectificaciones',
+                            }"
+                            class="nav-link"
+                        >
+                            <i class="fas fa-file-pdf nav-icon"></i>
+                            <p>S. de T. de Rectificaciones</p>
                         </router-link>
                     </li>
                     <li class="nav-header">PERFIL</li>

@@ -118,7 +118,12 @@
 
                                                 <template #cell(archivo)="row">
                                                     <a
-                                                        href=""
+                                                        href="#"
+                                                        @click.prevent="
+                                                            descargarArchivo(
+                                                                row.item.id
+                                                            )
+                                                        "
                                                         v-if="
                                                             row.item.archivo &&
                                                             row.item.archivo !=
@@ -284,7 +289,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.user);
         this.loadingWindow.close();
         this.getSeguimientoAprobados();
     },
@@ -417,6 +421,39 @@ export default {
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");
+        },
+        descargarArchivo(id) {
+            let config = {
+                responseType: "blob",
+            };
+            axios
+                .post(
+                    "/admin/seguimiento_aprobados/archivo/" + id,
+                    null,
+                    config
+                )
+                .then((res) => {
+                    console.log(res);
+                    let nom = res.headers["content-disposition"].split("=");
+                    var fileURL = window.URL.createObjectURL(
+                        new Blob([res.data])
+                    );
+                    var fileLink = document.createElement("a");
+
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute("download", nom[1]);
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                })
+                .catch(async (error) => {
+                    console.log(error);
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    this.enviando = false;
+                    if (error.response) {
+                    }
+                });
         },
     },
 };

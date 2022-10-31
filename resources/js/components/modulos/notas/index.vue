@@ -99,18 +99,13 @@
                                                             .institucion
                                                     }}
                                                 </template>
-                                                <template
-                                                    #cell(fecha)="row"
-                                                >
+                                                <template #cell(fecha)="row">
                                                     {{
-                                                        row.item
-                                                            .fecha &&
-                                                        row.item
-                                                            .fecha !=
+                                                        row.item.fecha &&
+                                                        row.item.fecha !=
                                                             "0000-00-00"
                                                             ? formatoFecha(
-                                                                  row.item
-                                                                      .fecha
+                                                                  row.item.fecha
                                                               )
                                                             : ""
                                                     }}
@@ -123,6 +118,11 @@
                                                             row.item.archivo &&
                                                             row.item.archivo !=
                                                                 ''
+                                                        "
+                                                        @click.prevent="
+                                                            descargarArchivo(
+                                                                row.item.id
+                                                            )
                                                         "
                                                         >Descargar</a
                                                     >
@@ -284,7 +284,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.user);
         this.loadingWindow.close();
         this.getNotas();
     },
@@ -355,18 +354,16 @@ export default {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    axios
-                        .post("/admin/notas/aprobar/" + id)
-                        .then((res) => {
-                            this.getNotas();
-                            this.filter = "";
-                            Swal.fire({
-                                icon: "success",
-                                title: res.data.msj,
-                                showConfirmButton: false,
-                                timer: 1500,
-                            });
+                    axios.post("/admin/notas/aprobar/" + id).then((res) => {
+                        this.getNotas();
+                        this.filter = "";
+                        Swal.fire({
+                            icon: "success",
+                            title: res.data.msj,
+                            showConfirmButton: false,
+                            timer: 1500,
                         });
+                    });
                 }
             });
         },
@@ -417,6 +414,39 @@ export default {
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");
+        },
+        descargarArchivo(id) {
+            let config = {
+                responseType: "blob",
+            };
+            axios
+                .post(
+                    "/admin/notas/archivo/" + id,
+                    null,
+                    config
+                )
+                .then((res) => {
+                    console.log(res);
+                    let nom = res.headers["content-disposition"].split("=");
+                    var fileURL = window.URL.createObjectURL(
+                        new Blob([res.data])
+                    );
+                    var fileLink = document.createElement("a");
+
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute("download", nom[1]);
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                })
+                .catch(async (error) => {
+                    console.log(error);
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    this.enviando = false;
+                    if (error.response) {
+                    }
+                });
         },
     },
 };

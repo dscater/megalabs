@@ -94,4 +94,9 @@ class NotaController extends Controller
             'msj' => 'El registro se eliminó de forma correcta',
         ], 200);
     }
+
+    public function archivo(Nota $nota)
+    {
+        return response()->download(public_path() . "/files/" . $nota->archivo, $nota->archivo);
+    }
 }

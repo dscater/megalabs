@@ -62,7 +62,7 @@ class UserController extends Controller
             'seguimiento_aprobados.create',
             'seguimiento_aprobados.edit',
             'seguimiento_aprobados.destroy',
-            
+
             'seguimiento_rectificacions.index',
             'seguimiento_rectificacions.create',
             'seguimiento_rectificacions.edit',
@@ -73,10 +73,24 @@ class UserController extends Controller
             'notas.edit',
             'notas.destroy',
 
+            'notificacions.index',
+            'notificacions.create',
+            'notificacions.edit',
+            'notificacions.destroy',
+
+            'alertas.index',
+            'alertas.create',
+            'alertas.edit',
+            'alertas.destroy',
+
             'configuracion.index',
             'configuracion.edit',
 
             'reportes.usuarios',
+            'reportes.maestro_registro',
+            'reportes.seguimiento_tramites',
+            'reportes.seguimiento_aprobados',
+            'reportes.seguimiento_rectificaciones',
         ],
         'AUXILIAR' => [],
     ];

@@ -132,6 +132,34 @@ export default new Router({
             component: require('./components/modulos/notas/edit.vue').default,
         },
 
+        // NOTIFICACIONES
+        {
+            path: '/notificacions',
+            name: 'notificacions.index',
+            component: require('./components/modulos/notificacions/index.vue').default,
+        },
+
+        {
+            path: '/notificacions/create',
+            name: 'notificacions.create',
+            component: require('./components/modulos/notificacions/create.vue').default,
+        },
+
+        {
+            path: '/notificacions/edit/:id',
+            name: 'notificacions.edit',
+            props: true,
+            component: require('./components/modulos/notificacions/edit.vue').default,
+        },
+
+        // ALERTAS
+        {
+            path: '/alertas',
+            name: 'alertas.index',
+            component: require('./components/modulos/alertas/index.vue').default,
+        },
+
+
         // CONFIGURACIÓN
         {
             path: '/configuracion',
@@ -145,6 +173,33 @@ export default new Router({
             path: '/reportes/usuarios',
             name: 'reportes.usuarios',
             component: require('./components/modulos/reportes/usuarios.vue').default,
+            props: true
+        },
+        {
+            path: '/reportes/maestro_registro',
+            name: 'reportes.maestro_registro',
+            component: require('./components/modulos/reportes/maestro_registro.vue').default,
+            props: true
+        },
+
+        {
+            path: '/reportes/seguimiento_tramites',
+            name: 'reportes.seguimiento_tramites',
+            component: require('./components/modulos/reportes/seguimiento_tramites.vue').default,
+            props: true
+        },
+
+        {
+            path: '/reportes/seguimiento_aprobados',
+            name: 'reportes.seguimiento_aprobados',
+            component: require('./components/modulos/reportes/seguimiento_aprobados.vue').default,
+            props: true
+        },
+
+        {
+            path: '/reportes/seguimiento_rectificaciones',
+            name: 'reportes.seguimiento_rectificaciones',
+            component: require('./components/modulos/reportes/seguimiento_rectificaciones.vue').default,
             props: true
         },
 
