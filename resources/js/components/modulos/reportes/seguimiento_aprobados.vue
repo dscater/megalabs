@@ -4,7 +4,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Reportes - Lista de Seguimiento de Trámites Aprobado</h1>
+                        <h1>
+                            Reportes - Lista de Seguimiento de Trámites
+                            Aprobados
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -54,7 +57,7 @@
                                                 class="form-group col-md-12"
                                                 v-if="
                                                     oReporte.filtro ==
-                                                    'Tipo de usuario'
+                                                    'Producto'
                                                 "
                                             >
                                                 <label
@@ -62,30 +65,41 @@
                                                         'text-danger':
                                                             errors.filtro,
                                                     }"
-                                                    >Seleccione*</label
+                                                    >Producto*</label
                                                 >
                                                 <el-select
-                                                    v-model="oReporte.tipo"
+                                                    v-model="
+                                                        oReporte.maestro_registro_id
+                                                    "
                                                     filterable
                                                     placeholder="Seleccione"
                                                     class="d-block"
                                                     :class="{
                                                         'is-invalid':
-                                                            errors.tipo,
+                                                            errors.maestro_registro_id,
                                                     }"
                                                 >
                                                     <el-option
-                                                        v-for="item in listTipos"
-                                                        :key="item"
-                                                        :label="item"
-                                                        :value="item"
+                                                        v-for="item in listMaestroRegistros"
+                                                        :key="item.id"
+                                                        :value="item.id"
+                                                        :label="
+                                                            item.codigo_producto +
+                                                            '-' +
+                                                            item.institucion
+                                                        "
                                                     >
                                                     </el-option>
                                                 </el-select>
                                                 <span
                                                     class="error invalid-feedback"
-                                                    v-if="errors.tipo"
-                                                    v-text="errors.tipo[0]"
+                                                    v-if="
+                                                        errors.maestro_registro_id
+                                                    "
+                                                    v-text="
+                                                        errors
+                                                            .maestro_registro_id[0]
+                                                    "
                                                 ></span>
                                             </div>
                                             <div
@@ -172,26 +186,27 @@ export default {
             errors: [],
             oReporte: {
                 filtro: "Todos",
-                tipo: "",
+                maestro_registro_id: "",
                 fecha_ini: "",
                 fecha_fin: "",
             },
             aFechas: [],
             enviando: false,
             textoBtn: "Generar Reporte",
-            listFiltro: ["Todos", "Tipo de usuario"],
-            listTipos: ["ADMINISTRADOR", "AUXILIAR"],
+            listFiltro: ["Todos", "Producto", "Rango de fechas"],
             errors: [],
-            listUnidades: [],
+            listMaestroRegistros: [],
         };
     },
     mounted() {
-        this.getUnidades();
+        this.getMaestroRegistros();
     },
     methods: {
-        getUnidades() {
-            axios.get("/admin/unidads").then((response) => {
-                this.listUnidades = response.data.unidads;
+        // obtener la lista de maestro de registros
+        getMaestroRegistros() {
+            axios.get("/admin/maestro_registros").then((response) => {
+                this.listMaestroRegistros = response.data.maestro_registros;
+                console.log(this.listMaestroRegistros);
             });
         },
         limpiarFormulario() {
@@ -203,7 +218,11 @@ export default {
                 responseType: "blob",
             };
             axios
-                .post("/admin/reportes/usuarios", this.oReporte, config)
+                .post(
+                    "/admin/reportes/seguimiento_aprobados",
+                    this.oReporte,
+                    config
+                )
                 .then((res) => {
                     this.errors = [];
                     this.enviando = false;

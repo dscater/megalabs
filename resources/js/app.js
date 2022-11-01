@@ -28,6 +28,10 @@ Vue.use(IconsPlugin)
 import Swal from 'sweetalert2'
 window.Swal = Swal;
 
+// TOASTR
+import toastr from "toastr";
+window.toastr = toastr;
+
 // MOMENT
 import moment from 'moment';
 moment.locale('es');

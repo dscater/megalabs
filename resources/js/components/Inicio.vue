@@ -62,16 +62,30 @@ export default {
             configuracion: JSON.parse(localStorage.getItem("configuracion")),
             user: JSON.parse(localStorage.getItem("user")),
             listInfoBox: [],
+            total_alertas: 0,
         };
     },
     mounted() {
         this.loadingWindow.close();
         this.getInfoBox();
+        this.verificaAlertas();
     },
     methods: {
         getInfoBox() {
             axios.get("/admin/usuarios/getInfoBox").then((res) => {
                 this.listInfoBox = res.data;
+            });
+        },
+        verificaAlertas() {
+            axios.post("/admin/alertas").then((response) => {
+                this.total_alertas = response.data.total_alertas;
+                if (this.total_alertas > 0) {
+                    console.log(this.total_alertas);
+                    toastr.error(
+                        `Existen ${this.total_alertas} productos próximos a vencer y/o vencidos`,
+                        "Atención"
+                    );
+                }
             });
         },
     },

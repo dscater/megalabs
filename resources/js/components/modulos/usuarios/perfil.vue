@@ -36,7 +36,7 @@
                                 <h3 class="profile-username text-center">
                                     {{ oUsuario.full_name }}
                                 </h3>
-                                <p class="text-muted text-center">
+                                <p class="text-green text-center">
                                     {{ oUsuario.tipo }}
                                 </p>
                                 <label
@@ -78,21 +78,10 @@
                                     ><i
                                         class="fas fa-envelope-open-text mr-1"
                                     ></i>
-                                    Cargo</strong
-                                >
-                                <p
-                                    class="text-muted"
-                                    v-text="oUsuario?.cargo"
-                                ></p>
-                                <hr />
-                                <strong
-                                    ><i
-                                        class="fas fa-envelope-open-text mr-1"
-                                    ></i>
                                     Correo</strong
                                 >
                                 <p
-                                    class="text-muted"
+                                    class="text-green"
                                     v-text="oUsuario?.correo"
                                 ></p>
                                 <hr />
@@ -101,7 +90,7 @@
                                     C.I:</strong
                                 >
                                 <p
-                                    class="text-muted"
+                                    class="text-green"
                                     v-text="oUsuario?.full_ci"
                                 ></p>
                                 <hr />
@@ -110,7 +99,7 @@
                                     >Teléfono/Celular:</strong
                                 >
                                 <p
-                                    class="text-muted"
+                                    class="text-green"
                                     v-text="
                                         `${oUsuario ? oUsuario.fono : ''} - ${
                                             oUsuario ? oUsuario.cel : ''
@@ -123,7 +112,7 @@
                                     Dirección:</strong
                                 >
                                 <p
-                                    class="text-muted"
+                                    class="text-green"
                                     v-text="oUsuario?.dir"
                                 ></p>
                             </div>

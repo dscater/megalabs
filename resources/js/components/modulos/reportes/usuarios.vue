@@ -179,24 +179,13 @@ export default {
             aFechas: [],
             enviando: false,
             textoBtn: "Generar Reporte",
-            listFiltro: [
-                "Todos",
-                "Tipo de usuario",
-            ],
+            listFiltro: ["Todos", "Tipo de usuario"],
             listTipos: ["ADMINISTRADOR", "AUXILIAR"],
             errors: [],
             listUnidades: [],
         };
     },
-    mounted() {
-        this.getUnidades();
-    },
     methods: {
-        getUnidades() {
-            axios.get("/admin/unidads").then((response) => {
-                this.listUnidades = response.data.unidads;
-            });
-        },
         limpiarFormulario() {
             this.oReporte.filtro = "Todos";
         },

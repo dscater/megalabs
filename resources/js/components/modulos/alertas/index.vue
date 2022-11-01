@@ -199,13 +199,26 @@ export default {
             ],
             totalRows: 10,
             filter: null,
+            total_alertas: 0,
         };
     },
     mounted() {
         this.loadingWindow.close();
-        this.getAlertas();
+        this.verificaAlertas();
     },
     methods: {
+        verificaAlertas() {
+            axios.post("/admin/alertas").then((response) => {
+                this.total_alertas = response.data.total_alertas;
+                if (this.total_alertas > 0) {
+                    toastr.error(
+                        `Existen ${this.total_alertas} productos con próximos a vencer y/o vencidos`,
+                        "Atención"
+                    );
+                }
+                this.getAlertas();
+            });
+        },
         // Listar Alertas
         getAlertas() {
             this.showOverlay = true;

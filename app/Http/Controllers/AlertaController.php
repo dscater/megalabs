@@ -16,7 +16,7 @@ class AlertaController extends Controller
 
     public function index()
     {
-        $alertas = Alerta::all();
+        $alertas = Alerta::orderBy("created_at", "desc")->get();
         return response()->JSON([
             "alertas" => $alertas,
             "total" => count($alertas)
@@ -25,27 +25,11 @@ class AlertaController extends Controller
 
     public function store(Request $request)
     {
-        if (isset($request->archivo)) {
-            $this->validacion["archivo"] = "file|max:10240";
-        }
-
-        $request->validate($this->validacion);
-
-        $request["fecha_registro"] = date("Y-m-d");
-        $alerta = Alerta::create(array_map("mb_strtoupper", $request->except("archivo")));
-
-        if ($request->hasFile('archivo')) {
-            $file = $request->archivo;
-            $nom_file = time() . '_alertas' . $alerta->id . '.' . $file->getClientOriginalExtension();
-            $alerta->archivo = $nom_file;
-            $file->move(public_path() . "/files/", $nom_file);
-        }
-        $alerta->save();
+        $total_alertas = Alerta::setAlertas();
 
         return response()->JSON([
             'sw' => true,
-            'alerta' => $alerta,
-            'msj' => 'El registro se realizó de forma correcta',
+            'total_alertas' => $total_alertas
         ], 200);
     }
 

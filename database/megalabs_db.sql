@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 28-10-2022 a las 19:02:53
+-- Tiempo de generación: 01-11-2022 a las 21:21:46
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -36,6 +36,14 @@ CREATE TABLE `alertas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `alertas`
+--
+
+INSERT INTO `alertas` (`id`, `maestro_registro_id`, `descripcion`, `fecha`, `fecha_registro`, `created_at`, `updated_at`) VALUES
+(1, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 295 DÍAS QUE VENCIÓ', '2022-11-01', '2022-11-01', '2022-11-01 21:02:40', '2022-11-01 21:02:40'),
+(2, 2, 'EL PRODUCTO P001 DE SENASAC LE QUEDAN 4 DÍAS PARA SU VENCIMIENTO', '2022-11-01', '2022-11-01', '2022-11-01 21:02:40', '2022-11-01 21:02:40');
 
 -- --------------------------------------------------------
 
@@ -130,9 +138,9 @@ CREATE TABLE `maestro_registros` (
 --
 
 INSERT INTO `maestro_registros` (`id`, `institucion`, `codigo_producto`, `descripcion_figura_rs`, `descripcion_sac`, `comercializado`, `numero_rs`, `fecha_emision_rs`, `fecha_vencimiento_rs`, `dias_vencer`, `estado_sanitario`, `actualizacion`, `condicion_sanitario`, `propiedad_lc`, `prioridad`, `responsable`, `fecha_revision_ab`, `fecha_tentativa_agemed`, `fecha_respuesta_agemed`, `primera_fecha_ro`, `segunda_fecha_ro`, `fecha_tentativa_p`, `fecha_estimada_o_rs2`, `comentarios_registro`, `comentarios_planificacion`, `gdp`, `presentacion_comercial`, `presentacion_rs`, `origen_rs`, `fabricante`, `para`, `bajo_licencia`, `fecha_rectificacion`, `principio_activo`, `concentracion`, `forma_farmaceutica_rs`, `forma_farmaceutica_amornizada`, `formula_cc`, `venta_ventanilla`, `condicion_venta`, `contacto_tecnico`, `vida_util`, `atq`, `condicion_almacenamiento`, `linea_estucheria`, `fecha_inicio_comercializacion`, `producto_licitacion`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:00:42', '2022-10-27 22:39:48'),
-(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '0000-00-00', '0000-00-00', 0, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:01:37', '2022-10-27 22:39:00'),
-(4, 'CANCILLERIA', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '0000-00-00', '0000-00-00', 0, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:35:19', '2022-10-27 22:36:16');
+(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:00:42', '2022-11-01 21:02:05'),
+(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-08-20', '2022-11-05', 77, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:01:37', '2022-10-31 21:36:57'),
+(4, 'CANCILLERIA', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '0000-00-00', '0000-00-00', 0, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:35:19', '2022-10-27 22:36:16');
 
 -- --------------------------------------------------------
 
@@ -185,7 +193,7 @@ CREATE TABLE `notas` (
 --
 
 INSERT INTO `notas` (`id`, `maestro_registro_id`, `referencia`, `descripcion`, `archivo`, `fecha`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 2, 'REFERENCIA NOTA', 'DESCRIPCION NOTA 1', NULL, '2022-10-28', '2022-10-28', '2022-10-28 18:59:05', '2022-10-28 18:59:05');
+(1, 2, 'REFERENCIA NOTA', 'DESCRIPCION NOTA 1', '1667254205_notas1.jpg', '2022-10-28', '2022-10-28', '2022-10-28 18:59:05', '2022-10-31 22:10:05');
 
 -- --------------------------------------------------------
 
@@ -204,6 +212,13 @@ CREATE TABLE `notificacions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `notificacions`
+--
+
+INSERT INTO `notificacions` (`id`, `maestro_registro_id`, `referencia`, `descripcion`, `archivo`, `fecha`, `fecha_registro`, `created_at`, `updated_at`) VALUES
+(1, 1, 'NOTIFICACION', 'DESCRIPCION NOTIFICACION', '1667254412_notificacions1.jpg', '2022-10-31', '2022-10-31', '2022-10-31 21:06:54', '2022-10-31 22:13:32');
 
 -- --------------------------------------------------------
 
@@ -247,7 +262,7 @@ CREATE TABLE `seguimiento_aprobados` (
 
 INSERT INTO `seguimiento_aprobados` (`id`, `maestro_registro_id`, `fecha_aprobacion`, `estado_final`, `archivo`, `observacion`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 1, '2022-01-01', 'APROBADO', '', '', '2022-10-28', '2022-10-28 16:00:05', '2022-10-28 16:00:05'),
-(2, 2, '2022-01-01', 'APROBADO', '1666977708_aprobados2.pdf', 'OBSERVACION TRAMITE APROBADO', '2022-10-28', '2022-10-28 17:21:48', '2022-10-28 17:23:52');
+(2, 2, '2022-01-01', 'APROBADO', '1667254089_aprobados2.pdf', 'OBSERVACION TRAMITE APROBADO', '2022-10-28', '2022-10-28 17:21:48', '2022-10-31 22:08:09');
 
 -- --------------------------------------------------------
 
@@ -281,7 +296,8 @@ CREATE TABLE `seguimiento_rectificacions` (
 --
 
 INSERT INTO `seguimiento_rectificacions` (`id`, `maestro_registro_id`, `responsable`, `tipo_tramite`, `fecha_ingreso`, `codigo_misa`, `hoja_ruta`, `motivo_rectificacion`, `agemed_estado`, `agemed_fecha`, `megalabs_estado`, `megalabs_fecha`, `rs_fecha`, `rs_nro_registro`, `rs_fecha_recojo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 1, 'JUAN PERES', 'RECTIFICACIÓN', '2022-03-03', 'MISA001', '', 'MOTIVO RECTIFICACION', 'ESTADO OBS. MISA AGEMED', '2022-04-04', 'ESTADO MISA-MEGALABS', '2022-05-05', '2022-06-06', '11111', '2022-10-28', '2022-10-28', '2022-10-28 17:44:38', '2022-10-28 17:50:48');
+(1, 1, 'JUAN PERES', 'RECTIFICACIÓN', '2022-03-03', 'MISA001', '', 'MOTIVO RECTIFICACION', 'ESTADO OBS. MISA AGEMED', '2022-04-04', 'ESTADO MISA-MEGALABS', '2022-05-05', '2022-06-06', '11111', '2022-10-28', '2022-10-28', '2022-10-28 17:44:38', '2022-10-28 17:50:48'),
+(2, 2, 'PEDRO RAMIRES', 'NOTIFICACIÓN', '0000-00-00', '', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '2022-11-01', '2022-11-01 20:45:42', '2022-11-01 20:45:42');
 
 -- --------------------------------------------------------
 
@@ -334,7 +350,7 @@ CREATE TABLE `seguimiento_tramites` (
 --
 
 INSERT INTO `seguimiento_tramites` (`id`, `maestro_registro_id`, `responsable`, `tipo_tramite`, `fecha_ingreso`, `codigo_misa`, `hora_ruta`, `ameged_estado`, `ameged_fecha`, `megalabs_estado`, `megalabs_fecha`, `rs_fecha_aprobacion`, `rs_nro_registro`, `rs_fecha_recojo`, `cpp_estado`, `cpp_carta`, `cpp_cite`, `cpp_archivo`, `muestra_estado`, `muestra_carta`, `muestra_cite`, `muestra_archivo`, `desplegado_estado`, `desplegado_carta`, `desplegado_cite`, `desplegado_archivo`, `gmp_estado`, `gmp_carta`, `gmp_cite`, `gmp_archivo`, `rl_estado`, `rl_carta`, `rl_cite`, `rl_archivo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 1, 'JUAN PERES', 'TIPO DE TRAMITE', '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-10-28', '2022-10-28 14:44:53', '2022-10-28 14:44:53'),
+(1, 1, 'JUAN PERES', 'TIPO DE TRAMITE', '0000-00-00', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '', '', '', '1667253780_cpp_archivo1.pdf', '', '', '', '1667253780_muestra_archivo1.jpg', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2022-10-28', '2022-10-28 14:44:53', '2022-10-31 22:03:00'),
 (2, 2, 'PEDRO RAMIRES', 'TRAMITE CON ARCHIVOS', '2022-01-01', 'CODIGO MISA', 'HOJA DE RUTA', 'OBSERVACIONES MISA AGEMED', '2022-10-28', 'ESTADO MISA MEGALABS', '2022-10-28', '2022-10-28', '123', '2022-10-28', 'ESTADO CPP', 'CARTA CPP', 'CITE CPP', '1666971403_cpp_archivo2.pdf', '', '', '', '1666971148_muestra_archivo2.pdf', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2022-10-28', '2022-10-28 15:23:52', '2022-10-28 15:36:43');
 
 -- --------------------------------------------------------
@@ -369,7 +385,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `cel`, `tipo`, `foto`, `password`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', '', NULL, '0', '', '', NULL, '', '', 'ADMINISTRADOR', NULL, '$2y$10$cDSOdzTsMDQAfqcb6.WFtu40s.wmQ4Jl8poIwW69MSZnnedD3prKu', '2022-10-27', NULL, NULL),
-(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', '', '22222', '777777', 'AUXILIAR', '1666903970_JPERES.jpg', '$2y$10$ZCCgKGeKbL7OnXD7H2hv4eOlcxZdlbdWcsXPKzOFyE93jBb5rOmZm', '2022-10-27', '2022-10-27 20:52:22', '2022-10-27 20:52:50');
+(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '22222', '777777', 'AUXILIAR', '1666903970_JPERES.jpg', '$2y$10$ZCCgKGeKbL7OnXD7H2hv4eOlcxZdlbdWcsXPKzOFyE93jBb5rOmZm', '2022-10-27', '2022-10-27 20:52:22', '2022-11-01 21:20:42');
 
 --
 -- Índices para tablas volcadas
@@ -458,7 +474,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -482,13 +498,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `notificacions`
 --
 ALTER TABLE `notificacions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -500,7 +516,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `seguimiento_aprobados`
 --
 ALTER TABLE `seguimiento_aprobados`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `seguimiento_rectificacions`

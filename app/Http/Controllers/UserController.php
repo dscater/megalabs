@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alerta;
 use App\Models\Cliente;
+use App\Models\MaestroRegistro;
+use App\Models\Nota;
+use App\Models\Notificacion;
+use App\Models\SeguimientoAprobado;
+use App\Models\SeguimientoRectificacion;
+use App\Models\SeguimientoTramite;
 use App\Models\Tcont;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -92,7 +99,51 @@ class UserController extends Controller
             'reportes.seguimiento_aprobados',
             'reportes.seguimiento_rectificaciones',
         ],
-        'AUXILIAR' => [],
+        'AUXILIAR' => [
+            'maestro_registros.index',
+            'maestro_registros.create',
+            'maestro_registros.edit',
+            'maestro_registros.destroy',
+
+            'seguimiento_tramites.index',
+            'seguimiento_tramites.create',
+            'seguimiento_tramites.edit',
+            'seguimiento_tramites.destroy',
+
+            'seguimiento_aprobados.index',
+            'seguimiento_aprobados.create',
+            'seguimiento_aprobados.edit',
+            'seguimiento_aprobados.destroy',
+
+            'seguimiento_rectificacions.index',
+            'seguimiento_rectificacions.create',
+            'seguimiento_rectificacions.edit',
+            'seguimiento_rectificacions.destroy',
+
+            'notas.index',
+            'notas.create',
+            'notas.edit',
+            'notas.destroy',
+
+            'notificacions.index',
+            'notificacions.create',
+            'notificacions.edit',
+            'notificacions.destroy',
+
+            'alertas.index',
+            'alertas.create',
+            'alertas.edit',
+            'alertas.destroy',
+
+            'configuracion.index',
+            'configuracion.edit',
+
+            'reportes.usuarios',
+            'reportes.maestro_registro',
+            'reportes.seguimiento_tramites',
+            'reportes.seguimiento_aprobados',
+            'reportes.seguimiento_rectificaciones',
+        ],
     ];
 
 
@@ -254,6 +305,77 @@ class UserController extends Controller
                 'icon' => 'fas fa-users',
             ];
         }
+
+        if (in_array('maestro_registros.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Maestro de Registro',
+                'cantidad' => count(MaestroRegistro::all()),
+                'color' => 'bg-primary',
+                'icon' => 'fas fa-list-alt',
+            ];
+        }
+
+        if (in_array('seguimiento_tramites.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Seguimiento de Trámites',
+                'cantidad' => count(SeguimientoTramite::all()),
+                'color' => 'bg-danger',
+                'icon' => 'fas fa-book',
+            ];
+        }
+
+        if (in_array('seguimiento_aprobados.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Seguimiento de Trámites Aprobados',
+                'cantidad' => count(SeguimientoAprobado::all()),
+                'color' => 'bg-cyan',
+                'icon' => 'fas fa-book',
+            ];
+        }
+
+        if (in_array('seguimiento_rectificacions.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Seguimiento de Trámites de Rectificación',
+                'cantidad' => count(SeguimientoRectificacion::all()),
+                'color' => 'bg-warning',
+                'icon' => 'fas fa-book',
+            ];
+        }
+
+        if (in_array('notas.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Notas',
+                'cantidad' => count(Nota::all()),
+                'color' => 'bg-teal',
+                'icon' => 'fas fa-clipboard',
+            ];
+        }
+
+        if (in_array('notificacions.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Notificaciones',
+                'cantidad' => count(Notificacion::all()),
+                'color' => 'bg-navy',
+                'icon' => 'fas fa-exclamation-triangle',
+            ];
+        }
+
+        if (in_array('alertas.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+
+                'label' => 'Alertas',
+                'cantidad' => count(Alerta::all()),
+                'color' => 'bg-danger',
+                'icon' => 'fas fa-bell',
+            ];
+        }
+
         return response()->JSON($array_infos);
     }
 
