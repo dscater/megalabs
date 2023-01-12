@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alerta;
 use App\Models\MaestroRegistro;
 use DateTime;
 use Illuminate\Http\Request;
@@ -61,7 +62,15 @@ class MaestroRegistroController extends Controller
 
         $request["dias_vencer"] = 0;
         $request["fecha_registro"] = date("Y-m-d");
-        $maestro_registro = MaestroRegistro::create(array_map("mb_strtoupper", $request->all()));
+        $maestro_registro = MaestroRegistro::create(array_map("mb_strtoupper", $request->except("registro_sanitario")));
+
+        if ($request->hasFile("registro_sanitario")) {
+            $file = $request->registro_sanitario;
+            $nom_registro_sanitario = time() . $maestro_registro->id . '_registro_sanitario.' . $file->getClientOriginalExtension();
+            $maestro_registro->registro_sanitario = $nom_registro_sanitario;
+            $file->move(public_path() . '/files/', $nom_registro_sanitario);
+            $maestro_registro->save();
+        }
 
         if ($maestro_registro->fecha_emision_rs != "" && $maestro_registro->fecha_emision_rs != "0000-00-00" && $maestro_registro->fecha_emision_rs != null && $maestro_registro->fecha_vencimiento_rs != "" && $maestro_registro->fecha_vencimiento_rs != "0000-00-00" && $maestro_registro->fecha_vencimiento_rs != null) {
             $date1 = new DateTime(date("Y-m-d", strtotime($maestro_registro->fecha_vencimiento_rs)));
@@ -69,7 +78,7 @@ class MaestroRegistroController extends Controller
             $diff = $date1->diff($date2);
             $maestro_registro->dias_vencer = $diff->days;
             $maestro_registro->save();
-            LoginController::setAlertas();
+            Alerta::setAlertas();
         }
 
 
@@ -88,14 +97,25 @@ class MaestroRegistroController extends Controller
     public function update(MaestroRegistro $maestro_registro, Request $request)
     {
         $request->validate($this->validacion);
-        $maestro_registro->update(array_map("mb_strtoupper", $request->all()));
+        $maestro_registro->update(array_map("mb_strtoupper", $request->except("registro_sanitario")));
+
+        if ($request->hasFile("registro_sanitario")) {
+            $antiguo = $maestro_registro->registro_sanitario;
+            \File::delete(public_path() . '/files/' . $antiguo);
+            $file = $request->registro_sanitario;
+            $nom_registro_sanitario = time() . $maestro_registro->id . '_registro_sanitario.' . $file->getClientOriginalExtension();
+            $maestro_registro->registro_sanitario = $nom_registro_sanitario;
+            $file->move(public_path() . '/files/', $nom_registro_sanitario);
+            $maestro_registro->save();
+        }
+
         if ($maestro_registro->fecha_emision_rs != "" && $maestro_registro->fecha_emision_rs != "0000-00-00" && $maestro_registro->fecha_emision_rs != null && $maestro_registro->fecha_vencimiento_rs != "" && $maestro_registro->fecha_vencimiento_rs != "0000-00-00" && $maestro_registro->fecha_vencimiento_rs != null) {
             $date1 = new DateTime(date("Y-m-d", strtotime($maestro_registro->fecha_vencimiento_rs)));
             $date2 = new DateTime(date("Y-m-d", strtotime($maestro_registro->fecha_emision_rs)));
             $diff = $date1->diff($date2);
             $maestro_registro->dias_vencer = $diff->days;
             $maestro_registro->save();
-            LoginController::setAlertas();
+            Alerta::setAlertas();
         }
 
         return response()->JSON([
@@ -107,6 +127,8 @@ class MaestroRegistroController extends Controller
 
     public function destroy(MaestroRegistro $maestro_registro)
     {
+        $antiguo = $maestro_registro->registro_sanitario;
+        \File::delete(public_path() . '/files/' . $antiguo);
         $maestro_registro->delete();
         return response()->JSON([
             'sw' => true,

@@ -61,6 +61,7 @@ class CreateMaestroRegistrosTable extends Migration
             $table->string("linea_estucheria", 255)->nullable();
             $table->date("fecha_inicio_comercializacion", 255)->nullable();
             $table->string("producto_licitacion", 255)->nullable();
+            $table->string("registro_sanitario", 255)->nullable();
             $table->date("fecha_registro", 255)->nullable();
             $table->timestamps();
         });

@@ -21,7 +21,7 @@ class MaestroRegistro extends Model
         "forma_farmaceutica_rs", "forma_farmaceutica_amornizada", "formula_cc",
         "venta_ventanilla", "condicion_venta", "contacto_tecnico", "vida_util",
         "atq", "condicion_almacenamiento", "linea_estucheria", "fecha_inicio_comercializacion",
-        "producto_licitacion", "fecha_registro",
+        "producto_licitacion", "registro_sanitario", "fecha_registro",
     ];
 
     public function alertas()

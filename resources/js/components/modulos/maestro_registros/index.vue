@@ -872,6 +872,11 @@ export default {
                     sortable: true,
                 },
                 {
+                    key: "numero_rs",
+                    label: "Número de RS o NSO/Senasag",
+                    sortable: true,
+                },
+                {
                     key: "descripcion_figura_rs",
                     label: "Descripción de Figura en el RS",
                     sortable: true,
