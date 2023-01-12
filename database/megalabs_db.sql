@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 01-11-2022 a las 21:21:46
+-- Tiempo de generación: 12-01-2023 a las 19:55:33
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -43,7 +43,15 @@ CREATE TABLE `alertas` (
 
 INSERT INTO `alertas` (`id`, `maestro_registro_id`, `descripcion`, `fecha`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 295 DÍAS QUE VENCIÓ', '2022-11-01', '2022-11-01', '2022-11-01 21:02:40', '2022-11-01 21:02:40'),
-(2, 2, 'EL PRODUCTO P001 DE SENASAC LE QUEDAN 4 DÍAS PARA SU VENCIMIENTO', '2022-11-01', '2022-11-01', '2022-11-01 21:02:40', '2022-11-01 21:02:40');
+(2, 2, 'EL PRODUCTO P001 DE SENASAC LE QUEDAN 4 DÍAS PARA SU VENCIMIENTO', '2022-11-01', '2022-11-01', '2022-11-01 21:02:40', '2022-11-01 21:02:40'),
+(3, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 296 DÍAS QUE VENCIÓ', '2022-11-02', '2022-11-02', '2022-11-02 15:56:49', '2022-11-02 15:56:49'),
+(4, 2, 'EL PRODUCTO P001 DE SENASAC LE QUEDAN 3 DÍAS PARA SU VENCIMIENTO', '2022-11-02', '2022-11-02', '2022-11-02 15:56:49', '2022-11-02 15:56:49'),
+(5, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 299 DÍAS QUE VENCIÓ', '2022-11-05', '2022-11-05', '2022-11-05 14:48:26', '2022-11-05 14:48:26'),
+(6, 2, 'EL PRODUCTO P001 DE SENASAC LE QUEDAN 0 DÍAS PARA SU VENCIMIENTO', '2022-11-05', '2022-11-05', '2022-11-05 14:48:26', '2022-11-05 14:48:26'),
+(7, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 330 DÍAS QUE VENCIÓ', '2022-12-06', '2022-12-06', '2022-12-06 15:24:23', '2022-12-06 15:24:23'),
+(8, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 31 DÍAS QUE VENCIÓ', '2022-12-06', '2022-12-06', '2022-12-06 15:24:23', '2022-12-06 15:24:23'),
+(9, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 367 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39'),
+(10, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 68 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39');
 
 -- --------------------------------------------------------
 
@@ -128,6 +136,7 @@ CREATE TABLE `maestro_registros` (
   `linea_estucheria` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_inicio_comercializacion` date DEFAULT NULL,
   `producto_licitacion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registro_sanitario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -137,10 +146,11 @@ CREATE TABLE `maestro_registros` (
 -- Volcado de datos para la tabla `maestro_registros`
 --
 
-INSERT INTO `maestro_registros` (`id`, `institucion`, `codigo_producto`, `descripcion_figura_rs`, `descripcion_sac`, `comercializado`, `numero_rs`, `fecha_emision_rs`, `fecha_vencimiento_rs`, `dias_vencer`, `estado_sanitario`, `actualizacion`, `condicion_sanitario`, `propiedad_lc`, `prioridad`, `responsable`, `fecha_revision_ab`, `fecha_tentativa_agemed`, `fecha_respuesta_agemed`, `primera_fecha_ro`, `segunda_fecha_ro`, `fecha_tentativa_p`, `fecha_estimada_o_rs2`, `comentarios_registro`, `comentarios_planificacion`, `gdp`, `presentacion_comercial`, `presentacion_rs`, `origen_rs`, `fabricante`, `para`, `bajo_licencia`, `fecha_rectificacion`, `principio_activo`, `concentracion`, `forma_farmaceutica_rs`, `forma_farmaceutica_amornizada`, `formula_cc`, `venta_ventanilla`, `condicion_venta`, `contacto_tecnico`, `vida_util`, `atq`, `condicion_almacenamiento`, `linea_estucheria`, `fecha_inicio_comercializacion`, `producto_licitacion`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:00:42', '2022-11-01 21:02:05'),
-(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-08-20', '2022-11-05', 77, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:01:37', '2022-10-31 21:36:57'),
-(4, 'CANCILLERIA', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '0000-00-00', '0000-00-00', 0, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '2022-10-27', '2022-10-27 22:35:19', '2022-10-27 22:36:16');
+INSERT INTO `maestro_registros` (`id`, `institucion`, `codigo_producto`, `descripcion_figura_rs`, `descripcion_sac`, `comercializado`, `numero_rs`, `fecha_emision_rs`, `fecha_vencimiento_rs`, `dias_vencer`, `estado_sanitario`, `actualizacion`, `condicion_sanitario`, `propiedad_lc`, `prioridad`, `responsable`, `fecha_revision_ab`, `fecha_tentativa_agemed`, `fecha_respuesta_agemed`, `primera_fecha_ro`, `segunda_fecha_ro`, `fecha_tentativa_p`, `fecha_estimada_o_rs2`, `comentarios_registro`, `comentarios_planificacion`, `gdp`, `presentacion_comercial`, `presentacion_rs`, `origen_rs`, `fabricante`, `para`, `bajo_licencia`, `fecha_rectificacion`, `principio_activo`, `concentracion`, `forma_farmaceutica_rs`, `forma_farmaceutica_amornizada`, `formula_cc`, `venta_ventanilla`, `condicion_venta`, `contacto_tecnico`, `vida_util`, `atq`, `condicion_almacenamiento`, `linea_estucheria`, `fecha_inicio_comercializacion`, `producto_licitacion`, `registro_sanitario`, `fecha_registro`, `created_at`, `updated_at`) VALUES
+(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:00:42', '2022-11-01 21:02:05'),
+(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-08-20', '2022-11-05', 77, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:01:37', '2022-12-06 15:24:23'),
+(4, 'CANCILLERIA', 'P001', 'PRODUCTO 1 AGEMED', '', '', '22222', '0000-00-00', '0000-00-00', 0, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:35:19', '2023-01-12 19:54:54'),
+(5, 'AGEMED', '', 'DESC FIGURA', '', '', '', '0000-00-00', '0000-00-00', 0, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '16735530725_registro_sanitario.pdf', '2023-01-12', '2023-01-12 19:49:29', '2023-01-12 19:51:12');
 
 -- --------------------------------------------------------
 
@@ -385,7 +395,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `cel`, `tipo`, `foto`, `password`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', '', NULL, '0', '', '', NULL, '', '', 'ADMINISTRADOR', NULL, '$2y$10$cDSOdzTsMDQAfqcb6.WFtu40s.wmQ4Jl8poIwW69MSZnnedD3prKu', '2022-10-27', NULL, NULL),
-(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '22222', '777777', 'AUXILIAR', '1666903970_JPERES.jpg', '$2y$10$ZCCgKGeKbL7OnXD7H2hv4eOlcxZdlbdWcsXPKzOFyE93jBb5rOmZm', '2022-10-27', '2022-10-27 20:52:22', '2022-11-01 21:20:42');
+(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '22222', '777777', 'AUXILIAR', '1666903970_JPERES.jpg', '$2y$10$sh3kqQQ/YjWUCaKKEPofae.dfPWIgHsv2t8KE/OAYru5WJGMJugM2', '2022-10-27', '2022-10-27 20:52:22', '2022-11-02 15:58:04');
 
 --
 -- Índices para tablas volcadas
@@ -474,7 +484,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -486,7 +496,7 @@ ALTER TABLE `configuracions`
 -- AUTO_INCREMENT de la tabla `maestro_registros`
 --
 ALTER TABLE `maestro_registros`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
