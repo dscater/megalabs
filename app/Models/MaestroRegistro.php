@@ -24,8 +24,15 @@ class MaestroRegistro extends Model
         "producto_licitacion", "registro_sanitario", "fecha_registro",
     ];
 
+    protected $appends = ["url_registro_sanitario"];
+
     public function alertas()
     {
         return $this->hasMany(Alerta::class, 'maestro_registro_id');
+    }
+
+    public function getUrlRegistroSanitarioAttribute()
+    {
+        return "/files/" . $this->registro_sanitario;
     }
 }

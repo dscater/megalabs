@@ -20,7 +20,7 @@ class CreateSeguimientoTramitesTable extends Migration
             $table->string("tipo_tramite", 255)->nullable();
             $table->date("fecha_ingreso")->nullable();
             $table->string("codigo_misa", 255)->nullable();
-            $table->string("hora_ruta", 255)->nullable();
+            $table->string("hoja_ruta", 255)->nullable();
             $table->string("ameged_estado", 255)->nullable();
             $table->date("ameged_fecha", 255)->nullable();
             $table->string("megalabs_estado", 255)->nullable();
@@ -48,6 +48,12 @@ class CreateSeguimientoTramitesTable extends Migration
             $table->text("rl_carta")->nullable();
             $table->string("rl_cite", 255)->nullable();
             $table->string("rl_archivo", 255)->nullable();
+
+            $table->date("fecha_aprobacion")->nullable();
+            $table->string("estado_final")->nullable();
+            $table->string("archivo_aprobacion", 255)->nullable();
+            $table->text("observacion")->nullable();
+
             $table->date("fecha_registro")->nullable();
             $table->timestamps();
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SeguimientoAprobado;
+use App\Models\SeguimientoTramite;
 use Illuminate\Http\Request;
 
 class SeguimientoAprobadoController extends Controller
@@ -17,7 +18,8 @@ class SeguimientoAprobadoController extends Controller
 
     public function index()
     {
-        $seguimiento_aprobados = SeguimientoAprobado::all();
+        // $seguimiento_aprobados = SeguimientoAprobado::all();
+        $seguimiento_aprobados = SeguimientoTramite::where("estado_final", "APROBADO")->get();
         return response()->JSON([
             "seguimiento_aprobados" => $seguimiento_aprobados,
             "total" => count($seguimiento_aprobados)

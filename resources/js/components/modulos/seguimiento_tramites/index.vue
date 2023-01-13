@@ -716,6 +716,103 @@
                                                             ></b-col>
                                                         </b-row>
 
+                                                        <b-row>
+                                                            <h5
+                                                                class="text-center"
+                                                            >
+                                                                Estado
+                                                                Aprobación
+                                                            </h5>
+                                                        </b-row>
+                                                        <b-row class="mb-2">
+                                                            <b-col
+                                                                sm="3"
+                                                                class="text-sm-right"
+                                                                ><b
+                                                                    >Fecha de
+                                                                    aprobación:</b
+                                                                ></b-col
+                                                            >
+                                                            <b-col>
+                                                                {{
+                                                                    row.item
+                                                                        .fecha_aprobacion &&
+                                                                    row.item
+                                                                        .fecha_aprobacion !=
+                                                                        "0000-00-00"
+                                                                        ? formatoFecha(
+                                                                              row
+                                                                                  .item
+                                                                                  .fecha_aprobacion
+                                                                          )
+                                                                        : ""
+                                                                }}
+                                                            </b-col>
+                                                        </b-row>
+
+                                                        <b-row class="mb-2">
+                                                            <b-col
+                                                                sm="3"
+                                                                class="text-sm-right"
+                                                                ><b
+                                                                    >Estado
+                                                                    final:</b
+                                                                ></b-col
+                                                            >
+                                                            <b-col>{{
+                                                                row.item
+                                                                    .estado_final
+                                                            }}</b-col>
+                                                        </b-row>
+                                                        <b-row class="mb-2">
+                                                            <b-col
+                                                                sm="3"
+                                                                class="text-sm-right"
+                                                                ><b
+                                                                    >Archivo
+                                                                    certificación:</b
+                                                                ></b-col
+                                                            >
+                                                            <b-col
+                                                                v-if="
+                                                                    row.item
+                                                                        .archivo_aprobacion &&
+                                                                    row.item
+                                                                        .archivo_aprobacion !=
+                                                                        ''
+                                                                "
+                                                            >
+                                                                <a
+                                                                    href="#"
+                                                                    @click.prevent="
+                                                                        descargarArchivo(
+                                                                            row
+                                                                                .item
+                                                                                .id,
+                                                                            'archivo_aprobacion'
+                                                                        )
+                                                                    "
+                                                                    >Descargar</a
+                                                                >
+                                                            </b-col>
+                                                            <b-col
+                                                                v-else
+                                                            ></b-col>
+                                                        </b-row>
+                                                        <b-row class="mb-2">
+                                                            <b-col
+                                                                sm="3"
+                                                                class="text-sm-right"
+                                                                ><b
+                                                                    >Observación:</b
+                                                                ></b-col
+                                                            >
+                                                            <b-col>{{
+                                                                row.item
+                                                                    .observacion
+                                                            }}</b-col>
+                                                        </b-row>
+
                                                         <b-button
                                                             size="sm"
                                                             variant="primary"

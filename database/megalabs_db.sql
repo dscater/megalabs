@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 12-01-2023 a las 19:55:33
+-- Tiempo de generación: 13-01-2023 a las 16:56:46
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -51,7 +51,9 @@ INSERT INTO `alertas` (`id`, `maestro_registro_id`, `descripcion`, `fecha`, `fec
 (7, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 330 DÍAS QUE VENCIÓ', '2022-12-06', '2022-12-06', '2022-12-06 15:24:23', '2022-12-06 15:24:23'),
 (8, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 31 DÍAS QUE VENCIÓ', '2022-12-06', '2022-12-06', '2022-12-06 15:24:23', '2022-12-06 15:24:23'),
 (9, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 367 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39'),
-(10, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 68 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39');
+(10, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 68 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39'),
+(11, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 368 DÍAS QUE VENCIÓ', '2023-01-13', '2023-01-13', '2023-01-13 14:01:39', '2023-01-13 14:01:39'),
+(12, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 69 DÍAS QUE VENCIÓ', '2023-01-13', '2023-01-13', '2023-01-13 14:01:39', '2023-01-13 14:01:39');
 
 -- --------------------------------------------------------
 
@@ -147,10 +149,10 @@ CREATE TABLE `maestro_registros` (
 --
 
 INSERT INTO `maestro_registros` (`id`, `institucion`, `codigo_producto`, `descripcion_figura_rs`, `descripcion_sac`, `comercializado`, `numero_rs`, `fecha_emision_rs`, `fecha_vencimiento_rs`, `dias_vencer`, `estado_sanitario`, `actualizacion`, `condicion_sanitario`, `propiedad_lc`, `prioridad`, `responsable`, `fecha_revision_ab`, `fecha_tentativa_agemed`, `fecha_respuesta_agemed`, `primera_fecha_ro`, `segunda_fecha_ro`, `fecha_tentativa_p`, `fecha_estimada_o_rs2`, `comentarios_registro`, `comentarios_planificacion`, `gdp`, `presentacion_comercial`, `presentacion_rs`, `origen_rs`, `fabricante`, `para`, `bajo_licencia`, `fecha_rectificacion`, `principio_activo`, `concentracion`, `forma_farmaceutica_rs`, `forma_farmaceutica_amornizada`, `formula_cc`, `venta_ventanilla`, `condicion_venta`, `contacto_tecnico`, `vida_util`, `atq`, `condicion_almacenamiento`, `linea_estucheria`, `fecha_inicio_comercializacion`, `producto_licitacion`, `registro_sanitario`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:00:42', '2022-11-01 21:02:05'),
-(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-08-20', '2022-11-05', 77, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:01:37', '2022-12-06 15:24:23'),
-(4, 'CANCILLERIA', 'P001', 'PRODUCTO 1 AGEMED', '', '', '22222', '0000-00-00', '0000-00-00', 0, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:35:19', '2023-01-12 19:54:54'),
-(5, 'AGEMED', '', 'DESC FIGURA', '', '', '', '0000-00-00', '0000-00-00', 0, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '16735530725_registro_sanitario.pdf', '2023-01-12', '2023-01-12 19:49:29', '2023-01-12 19:51:12');
+(1, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-01-01', '2022-01-10', 9, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '16736228941_registro_sanitario.pdf', '2022-10-27', '2022-10-27 22:00:42', '2023-01-13 15:14:54'),
+(2, 'SENASAC', 'P001', 'PRODUCTO 1 AGEMED', '', '', '', '2022-08-20', '2022-11-05', 77, 'VENCIDO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '16736229112_registro_sanitario.pdf', '2022-10-27', '2022-10-27 22:01:37', '2023-01-13 15:15:11'),
+(4, 'AGEMED', 'P001', 'PRODUCTO 1 AGEMED', '', '', '22222', '0000-00-00', '0000-00-00', 0, 'SIN REGISTRO', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', NULL, '2022-10-27', '2022-10-27 22:35:19', '2023-01-13 16:04:30'),
+(5, 'AGEMED', 'P0044', 'DESC FIGURA', '', '', '', '0000-00-00', '0000-00-00', 0, 'VIGENTE', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '16736228875_registro_sanitario.pdf', '2023-01-12', '2023-01-12 19:49:29', '2023-01-13 16:04:48');
 
 -- --------------------------------------------------------
 
@@ -322,7 +324,7 @@ CREATE TABLE `seguimiento_tramites` (
   `tipo_tramite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `codigo_misa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hora_ruta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hoja_ruta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ameged_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ameged_fecha` date DEFAULT NULL,
   `megalabs_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -350,6 +352,10 @@ CREATE TABLE `seguimiento_tramites` (
   `rl_carta` text COLLATE utf8mb4_unicode_ci,
   `rl_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rl_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_aprobacion` date DEFAULT NULL,
+  `estado_final` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `archivo_aprobacion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `observacion` text COLLATE utf8mb4_unicode_ci,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -359,9 +365,10 @@ CREATE TABLE `seguimiento_tramites` (
 -- Volcado de datos para la tabla `seguimiento_tramites`
 --
 
-INSERT INTO `seguimiento_tramites` (`id`, `maestro_registro_id`, `responsable`, `tipo_tramite`, `fecha_ingreso`, `codigo_misa`, `hora_ruta`, `ameged_estado`, `ameged_fecha`, `megalabs_estado`, `megalabs_fecha`, `rs_fecha_aprobacion`, `rs_nro_registro`, `rs_fecha_recojo`, `cpp_estado`, `cpp_carta`, `cpp_cite`, `cpp_archivo`, `muestra_estado`, `muestra_carta`, `muestra_cite`, `muestra_archivo`, `desplegado_estado`, `desplegado_carta`, `desplegado_cite`, `desplegado_archivo`, `gmp_estado`, `gmp_carta`, `gmp_cite`, `gmp_archivo`, `rl_estado`, `rl_carta`, `rl_cite`, `rl_archivo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 1, 'JUAN PERES', 'TIPO DE TRAMITE', '0000-00-00', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '', '', '', '1667253780_cpp_archivo1.pdf', '', '', '', '1667253780_muestra_archivo1.jpg', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2022-10-28', '2022-10-28 14:44:53', '2022-10-31 22:03:00'),
-(2, 2, 'PEDRO RAMIRES', 'TRAMITE CON ARCHIVOS', '2022-01-01', 'CODIGO MISA', 'HOJA DE RUTA', 'OBSERVACIONES MISA AGEMED', '2022-10-28', 'ESTADO MISA MEGALABS', '2022-10-28', '2022-10-28', '123', '2022-10-28', 'ESTADO CPP', 'CARTA CPP', 'CITE CPP', '1666971403_cpp_archivo2.pdf', '', '', '', '1666971148_muestra_archivo2.pdf', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2022-10-28', '2022-10-28 15:23:52', '2022-10-28 15:36:43');
+INSERT INTO `seguimiento_tramites` (`id`, `maestro_registro_id`, `responsable`, `tipo_tramite`, `fecha_ingreso`, `codigo_misa`, `hoja_ruta`, `ameged_estado`, `ameged_fecha`, `megalabs_estado`, `megalabs_fecha`, `rs_fecha_aprobacion`, `rs_nro_registro`, `rs_fecha_recojo`, `cpp_estado`, `cpp_carta`, `cpp_cite`, `cpp_archivo`, `muestra_estado`, `muestra_carta`, `muestra_cite`, `muestra_archivo`, `desplegado_estado`, `desplegado_carta`, `desplegado_cite`, `desplegado_archivo`, `gmp_estado`, `gmp_carta`, `gmp_cite`, `gmp_archivo`, `rl_estado`, `rl_carta`, `rl_cite`, `rl_archivo`, `fecha_aprobacion`, `estado_final`, `archivo_aprobacion`, `observacion`, `fecha_registro`, `created_at`, `updated_at`) VALUES
+(1, 1, 'JUAN PERES', 'TIPO DE TRAMITE', '0000-00-00', '', '', '', '0000-00-00', 'ESTADO PRESENTACIÓN', '0000-00-00', '0000-00-00', '', '0000-00-00', '', '', '', '1667253780_cpp_archivo1.pdf', '', '', '', '1667253780_muestra_archivo1.jpg', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '0000-00-00', 'APROBADO', '1673626865_archivo_aprobacion1.pdf', '', '2022-10-28', '2022-10-28 14:44:53', '2023-01-13 16:21:05'),
+(2, 2, 'PEDRO RAMIRES', 'TRAMITE CON ARCHIVOS', '2022-01-01', 'CODIGO MISA', 'HOJA DE RUTA', 'OBSERVACIONES MISA AGEMED', '2022-10-28', 'ESTADO MISA MEGALABS', '2022-10-28', '2022-10-28', '123', '2022-10-28', 'ESTADO CPP', 'CARTA CPP', 'CITE CPP', '1666971403_cpp_archivo2.pdf', '', '', '', '1666971148_muestra_archivo2.pdf', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2023-01-13', 'EN PROCESO', '', 'OBSERVACION DE APROBACIÓN', '2022-10-28', '2022-10-28 15:23:52', '2023-01-13 16:04:02'),
+(3, 5, 'JORGE PAREDES', 'TRAMITE DE PRUEBA', '2023-01-13', '00011', '22300', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '2023-01-13', 'APROBADO', '1673627297_archivo_aprobacion3.pdf', 'OBS. APROBACIÓN', '2023-01-13', '2023-01-13 16:05:16', '2023-01-13 16:28:17');
 
 -- --------------------------------------------------------
 
@@ -484,7 +491,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
@@ -538,7 +545,7 @@ ALTER TABLE `seguimiento_rectificacions`
 -- AUTO_INCREMENT de la tabla `seguimiento_tramites`
 --
 ALTER TABLE `seguimiento_tramites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

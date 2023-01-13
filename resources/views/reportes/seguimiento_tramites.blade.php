@@ -192,7 +192,7 @@
                 </tr>
                 <tr>
                     <td class="gray bold">Hoja de Ruta</td>
-                    <td>{{ $seguimiento_tramite->hora_ruta }}</td>
+                    <td>{{ $seguimiento_tramite->hoja_ruta }}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="centreado dark_gray bold">Estado MISA-AGEMED(Observaciones)</td>

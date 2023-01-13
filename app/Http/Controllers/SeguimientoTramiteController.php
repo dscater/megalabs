@@ -31,12 +31,14 @@ class SeguimientoTramiteController extends Controller
         "rl_estado" => "nullable|min:1",
         "rl_carta" => "nullable|min:1",
         "rl_cite" => "nullable|min:1",
+
+        "estado_final" => "required",
     ];
     public $mensajes = [];
 
     public function index()
     {
-        $seguimiento_tramites = SeguimientoTramite::all();
+        $seguimiento_tramites = SeguimientoTramite::get();
         return response()->JSON([
             "seguimiento_tramites" => $seguimiento_tramites,
             "total" => count($seguimiento_tramites)
@@ -105,6 +107,14 @@ class SeguimientoTramiteController extends Controller
             $seguimiento_tramite->rl_archivo = $nom_file;
             $file->move(public_path() . "/files/", $nom_file);
         }
+
+        if ($request->hasFile('archivo_aprobacion')) {
+            $file = $request->archivo_aprobacion;
+            $nom_file = time() . '_archivo_aprobacion' . $seguimiento_tramite->id . '.' . $file->getClientOriginalExtension();
+            $seguimiento_tramite->archivo_aprobacion = $nom_file;
+            $file->move(public_path() . "/files/", $nom_file);
+        }
+
         $seguimiento_tramite->save();
 
         return response()->JSON([
@@ -198,6 +208,18 @@ class SeguimientoTramiteController extends Controller
             $seguimiento_tramite->rl_archivo = $nom_file;
             $file->move(public_path() . "/files/", $nom_file);
         }
+
+        if ($request->hasFile('archivo_aprobacion')) {
+            $antiguo = $seguimiento_tramite->archivo_aprobacion;
+            if ($antiguo) {
+                \File::delete(public_path() . "/files/" . $antiguo);
+            }
+            $file = $request->archivo_aprobacion;
+            $nom_file = time() . '_archivo_aprobacion' . $seguimiento_tramite->id . '.' . $file->getClientOriginalExtension();
+            $seguimiento_tramite->archivo_aprobacion = $nom_file;
+            $file->move(public_path() . "/files/", $nom_file);
+        }
+
         $seguimiento_tramite->save();
 
         return response()->JSON([

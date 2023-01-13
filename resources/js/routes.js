@@ -92,6 +92,13 @@ export default new Router({
             component: require('./components/modulos/seguimiento_aprobados/edit.vue').default,
         },
 
+        {
+            path: '/seguimiento_aprobados/show/:id',
+            name: 'seguimiento_aprobados.show',
+            props: true,
+            component: require('./components/modulos/seguimiento_aprobados/show.vue').default,
+        },
+
         // SEGUIMIENTO RECTIFICACIONES
         {
             path: '/seguimiento_rectificacions',

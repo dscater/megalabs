@@ -32,6 +32,15 @@
                                             Nuevo
                                         </router-link>
                                     </div>
+                                    <div class="col-md-3">
+                                        <button
+                                            class="btn btn-success btn-flat btn-block"
+                                            @click="descargarExcel"
+                                        >
+                                            <i class="fa fa-file-excel"></i>
+                                            Exportar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -787,6 +796,32 @@
                                                                 class="fa fa-edit"
                                                             ></i>
                                                         </b-button>
+
+                                                        <b-button
+                                                            v-if="
+                                                                row.item
+                                                                    .registro_sanitario !=
+                                                                    '' &&
+                                                                row.item
+                                                                    .registro_sanitario !=
+                                                                    null
+                                                            "
+                                                            size="sm"
+                                                            pill
+                                                            variant="primary"
+                                                            class="btn-flat btn-block"
+                                                            title="Ver registro sanitario"
+                                                            @click="
+                                                                muestra_registro_sanitario(
+                                                                    row.item
+                                                                        .url_registro_sanitario
+                                                                )
+                                                            "
+                                                        >
+                                                            <i
+                                                                class="fa fa-file"
+                                                            ></i>
+                                                        </b-button>
                                                         <b-button
                                                             size="sm"
                                                             pill
@@ -847,12 +882,21 @@
                     </div>
                 </div>
             </div>
+            <RegistroSanitario
+                :muestra_modal="muestra_modal_rs"
+                :url_file="url_file"
+                @close="muestra_modal_rs = false"
+            ></RegistroSanitario>
         </section>
     </div>
 </template>
 
 <script>
+import RegistroSanitario from "./RegistroSanitario.vue";
 export default {
+    components: {
+        RegistroSanitario,
+    },
     data() {
         return {
             permisos: localStorage.getItem("permisos"),
@@ -918,6 +962,8 @@ export default {
             ],
             totalRows: 10,
             filter: null,
+            muestra_modal_rs: false,
+            url_file: "",
         };
     },
     mounted() {
@@ -947,7 +993,8 @@ export default {
             if (!item || type !== "row") return;
             if (item.estado_sanitario === "VIGENTE") return "table-success";
             if (item.estado_sanitario === "VENCIDO") return "table-danger";
-            if (item.estado_sanitario === "SIN REGISTRO") return "bg-gray-light";
+            if (item.estado_sanitario === "SIN REGISTRO")
+                return "bg-gray-light";
         },
         eliminaMaestroRegistro(id, descripcion) {
             Swal.fire({
@@ -1045,6 +1092,32 @@ export default {
                     console.log(error);
                 });
         },
+        descargarExcel() {
+            let config = {
+                responseType: "blob",
+            };
+            axios
+                .post("/admin/reportes/maestro_registro_excel", null, config)
+                .then((response) => {
+                    var fileURL = window.URL.createObjectURL(
+                        new Blob([response.data])
+                    );
+                    var fileLink = document.createElement("a");
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute("download", "maestro_registros.xlsx");
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                })
+                .catch(async (error) => {
+                    console.log(error);
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    this.enviando = false;
+                    if (error.response) {
+                    }
+                });
+        },
         onFiltered(filteredItems) {
             // Trigger pagination to update the number of buttons/pages due to filtering
             this.totalRows = filteredItems.length;
@@ -1052,6 +1125,11 @@ export default {
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");
+        },
+        muestra_registro_sanitario(url) {
+            this.muestra_modal_rs = true;
+            console.log(url);
+            this.url_file = url;
         },
     },
 };

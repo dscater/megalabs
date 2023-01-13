@@ -27,7 +27,7 @@ class Alerta extends Model
         $fecha = date("Y-m-d");
         $total = 0;
         foreach ($maestro_registros as $maestro_registro) {
-            if ($maestro_registro->fecha_vencimiento_rs != "" && $maestro_registro->fecha_vencimiento_rs != "0000-00-00" && $maestro_registro->fecha_vencimiento_rs != null && date("Y-m-d", strtotime($maestro_registro->fecha_vencimiento_rs . "-15 days")) < date("Y-m-d")) {
+            if ($maestro_registro->fecha_vencimiento_rs != "" && $maestro_registro->fecha_vencimiento_rs != "0000-00-00" && $maestro_registro->fecha_vencimiento_rs != null && date("Y-m-d", strtotime($maestro_registro->fecha_vencimiento_rs . "-6 month")) < date("Y-m-d")) {
 
                 $alerta = Alerta::where("maestro_registro_id", $maestro_registro->id)->where("fecha", $fecha)->get()->first();
                 if (!$alerta) {

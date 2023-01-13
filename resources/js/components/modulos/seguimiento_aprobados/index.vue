@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <!-- <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <router-link
@@ -33,7 +33,7 @@
                                         </router-link>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="card-body">
                                 <div class="row">
                                     <b-col lg="10" class="my-1">
@@ -116,7 +116,9 @@
                                                     }}
                                                 </template>
 
-                                                <template #cell(archivo)="row">
+                                                <template
+                                                    #cell(archivo_aprobacion)="row"
+                                                >
                                                     <a
                                                         href="#"
                                                         @click.prevent="
@@ -125,8 +127,10 @@
                                                             )
                                                         "
                                                         v-if="
-                                                            row.item.archivo &&
-                                                            row.item.archivo !=
+                                                            row.item
+                                                                .archivo_aprobacion &&
+                                                            row.item
+                                                                .archivo_aprobacion !=
                                                                 ''
                                                         "
                                                         >Descargar</a
@@ -150,6 +154,22 @@
                                                         class="row justify-content-between"
                                                     >
                                                         <b-button
+                                                            size="sm"
+                                                            pill
+                                                            variant="outline-success"
+                                                            class="btn-flat btn-block"
+                                                            title="Ver registro"
+                                                            @click="
+                                                                show(
+                                                                    row.item.id
+                                                                )
+                                                            "
+                                                        >
+                                                            <i
+                                                                class="fa fa-eye"
+                                                            ></i>
+                                                        </b-button>
+                                                        <!-- <b-button
                                                             size="sm"
                                                             pill
                                                             variant="outline-warning"
@@ -187,7 +207,7 @@
                                                             <i
                                                                 class="fa fa-trash"
                                                             ></i>
-                                                        </b-button>
+                                                        </b-button> -->
                                                     </div>
                                                 </template>
                                             </b-table>
@@ -257,7 +277,7 @@ export default {
                     sortable: true,
                 },
                 {
-                    key: "archivo",
+                    key: "archivo_aprobacion",
                     label: "Certificación",
                     sortable: true,
                 },
@@ -395,6 +415,12 @@ export default {
                 params: { id: id },
             });
         },
+        show(id) {
+            this.$router.push({
+                name: "seguimiento_aprobados.show",
+                params: { id: id },
+            });
+        },
         pdf(id) {
             let config = {
                 responseType: "blob",
@@ -428,8 +454,8 @@ export default {
             };
             axios
                 .post(
-                    "/admin/seguimiento_aprobados/archivo/" + id,
-                    null,
+                    "/admin/seguimiento_tramites/archivo/" + id,
+                    { archivo: "archivo_aprobacion" },
                     config
                 )
                 .then((res) => {

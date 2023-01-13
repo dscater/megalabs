@@ -89,6 +89,7 @@ Route::prefix('admin')->group(function () {
     // REPORTES
     Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
     Route::post('reportes/maestro_registro', [ReporteController::class, 'maestro_registro']);
+    Route::post('reportes/maestro_registro_excel', [ReporteController::class, 'maestro_registro_excel']);
     Route::post('reportes/seguimiento_tramites', [ReporteController::class, 'seguimiento_tramites']);
     Route::post('reportes/seguimiento_aprobados', [ReporteController::class, 'seguimiento_aprobados']);
     Route::post('reportes/seguimiento_rectificaciones', [ReporteController::class, 'seguimiento_rectificaciones']);
