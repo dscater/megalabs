@@ -101,42 +101,18 @@ class UserController extends Controller
         ],
         'VISITADOR MÉDICO' => [
             'maestro_registros.index',
-            'maestro_registros.create',
-            'maestro_registros.edit',
-            'maestro_registros.destroy',
 
             'seguimiento_tramites.index',
-            'seguimiento_tramites.create',
-            'seguimiento_tramites.edit',
-            'seguimiento_tramites.destroy',
 
             'seguimiento_aprobados.index',
-            'seguimiento_aprobados.create',
-            'seguimiento_aprobados.edit',
-            'seguimiento_aprobados.destroy',
 
             'seguimiento_rectificacions.index',
-            'seguimiento_rectificacions.create',
-            'seguimiento_rectificacions.edit',
-            'seguimiento_rectificacions.destroy',
 
             'notas.index',
-            'notas.create',
-            'notas.edit',
-            'notas.destroy',
 
             'notificacions.index',
-            'notificacions.create',
-            'notificacions.edit',
-            'notificacions.destroy',
 
             'alertas.index',
-            'alertas.create',
-            'alertas.edit',
-            'alertas.destroy',
-
-            'configuracion.index',
-            'configuracion.edit',
 
             'reportes.usuarios',
             'reportes.maestro_registro',
