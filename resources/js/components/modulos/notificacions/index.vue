@@ -171,6 +171,11 @@
                                                         class="row justify-content-between"
                                                     >
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'notificacions.edit'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="outline-warning"
@@ -187,6 +192,11 @@
                                                             ></i>
                                                         </b-button>
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'notificacions.destroy'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="outline-danger"

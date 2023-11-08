@@ -807,6 +807,11 @@
                                                         class="row justify-content-between"
                                                     >
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'maestro_registros.edit'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="warning"
@@ -849,6 +854,11 @@
                                                             ></i>
                                                         </b-button>
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'maestro_registros.destroy'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="danger"

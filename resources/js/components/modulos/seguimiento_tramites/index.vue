@@ -866,6 +866,11 @@
                                                         class="row justify-content-between"
                                                     >
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'seguimiento_tramites.edit'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="outline-warning"
@@ -882,6 +887,11 @@
                                                             ></i>
                                                         </b-button>
                                                         <b-button
+                                                            v-if="
+                                                                permisos.includes(
+                                                                    'seguimiento_tramites.destroy'
+                                                                )
+                                                            "
                                                             size="sm"
                                                             pill
                                                             variant="outline-danger"
