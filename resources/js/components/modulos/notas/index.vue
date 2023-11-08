@@ -36,7 +36,33 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <b-col lg="10" class="my-1">
+                                    <b-col lg="6" class="my-1">
+                                        <div class="row">
+                                            <b-col sm="6" md="4">
+                                                <b-form-select
+                                                    align="right"
+                                                    id="per-page-select"
+                                                    v-model="perPage"
+                                                    :options="pageOptions"
+                                                    size="sm"
+                                                ></b-form-select>
+                                            </b-col>
+                                            <b-col
+                                                sm="6"
+                                                md="8"
+                                                class="mr-auto"
+                                                v-if="perPage"
+                                            >
+                                                <b-pagination
+                                                    v-model="currentPage"
+                                                    :total-rows="totalRows"
+                                                    :per-page="perPage"
+                                                    align="left"
+                                                ></b-pagination>
+                                            </b-col>
+                                        </div>
+                                    </b-col>
+                                    <b-col lg="6" class="my-1">
                                         <b-form-group
                                             label="Buscar"
                                             label-for="filter-input"
@@ -187,34 +213,6 @@
                                                 </template>
                                             </b-table>
                                         </b-overlay>
-                                        <div class="row">
-                                            <b-col
-                                                sm="6"
-                                                md="2"
-                                                class="ml-auto my-1"
-                                            >
-                                                <b-form-select
-                                                    align="right"
-                                                    id="per-page-select"
-                                                    v-model="perPage"
-                                                    :options="pageOptions"
-                                                    size="sm"
-                                                ></b-form-select>
-                                            </b-col>
-                                            <b-col
-                                                sm="6"
-                                                md="2"
-                                                class="my-1 mr-auto"
-                                                v-if="perPage"
-                                            >
-                                                <b-pagination
-                                                    v-model="currentPage"
-                                                    :total-rows="totalRows"
-                                                    :per-page="perPage"
-                                                    align="left"
-                                                ></b-pagination>
-                                            </b-col>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -420,11 +418,7 @@ export default {
                 responseType: "blob",
             };
             axios
-                .post(
-                    "/admin/notas/archivo/" + id,
-                    null,
-                    config
-                )
+                .post("/admin/notas/archivo/" + id, null, config)
                 .then((res) => {
                     console.log(res);
                     let nom = res.headers["content-disposition"].split("=");

@@ -99,7 +99,7 @@ class UserController extends Controller
             'reportes.seguimiento_aprobados',
             'reportes.seguimiento_rectificaciones',
         ],
-        'AUXILIAR' => [
+        'VISITADOR MÉDICO' => [
             'maestro_registros.index',
             'maestro_registros.create',
             'maestro_registros.edit',

@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-01-2023 a las 16:56:46
--- Versión del servidor: 5.7.33
+-- Tiempo de generación: 08-11-2023 a las 00:39:25
+-- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alertas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
+  `descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
   `fecha_registro` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -53,7 +53,9 @@ INSERT INTO `alertas` (`id`, `maestro_registro_id`, `descripcion`, `fecha`, `fec
 (9, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 367 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39'),
 (10, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 68 DÍAS QUE VENCIÓ', '2023-01-12', '2023-01-12', '2023-01-12 18:28:39', '2023-01-12 18:28:39'),
 (11, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 368 DÍAS QUE VENCIÓ', '2023-01-13', '2023-01-13', '2023-01-13 14:01:39', '2023-01-13 14:01:39'),
-(12, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 69 DÍAS QUE VENCIÓ', '2023-01-13', '2023-01-13', '2023-01-13 14:01:39', '2023-01-13 14:01:39');
+(12, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 69 DÍAS QUE VENCIÓ', '2023-01-13', '2023-01-13', '2023-01-13 14:01:39', '2023-01-13 14:01:39'),
+(13, 1, 'EL PRODUCTO P001 DE AGEMED YA TIENE 666 DÍAS QUE VENCIÓ', '2023-11-07', '2023-11-07', '2023-11-08 00:31:08', '2023-11-08 00:31:08'),
+(14, 2, 'EL PRODUCTO P001 DE SENASAC YA TIENE 367 DÍAS QUE VENCIÓ', '2023-11-07', '2023-11-07', '2023-11-08 00:31:08', '2023-11-08 00:31:08');
 
 -- --------------------------------------------------------
 
@@ -62,17 +64,17 @@ INSERT INTO `alertas` (`id`, `maestro_registro_id`, `descripcion`, `fecha`, `fec
 --
 
 CREATE TABLE `configuracions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre_sistema` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `razon_social` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ciudad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `web` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `actividad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `correo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `nombre_sistema` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `razon_social` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ciudad` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fono` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `web` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actividad` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -91,22 +93,22 @@ INSERT INTO `configuracions` (`id`, `nombre_sistema`, `alias`, `razon_social`, `
 --
 
 CREATE TABLE `maestro_registros` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `institucion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigo_producto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `descripcion_figura_rs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion_sac` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `comercializado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `numero_rs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `institucion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo_producto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion_figura_rs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion_sac` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comercializado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `numero_rs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_emision_rs` date DEFAULT NULL,
   `fecha_vencimiento_rs` date DEFAULT NULL,
-  `dias_vencer` int(11) DEFAULT NULL,
-  `estado_sanitario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `actualizacion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `condicion_sanitario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `propiedad_lc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `prioridad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `responsable` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dias_vencer` int DEFAULT NULL,
+  `estado_sanitario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actualizacion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `condicion_sanitario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `propiedad_lc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prioridad` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `responsable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_revision_ab` date DEFAULT NULL,
   `fecha_tentativa_agemed` date DEFAULT NULL,
   `fecha_respuesta_agemed` date DEFAULT NULL,
@@ -114,31 +116,31 @@ CREATE TABLE `maestro_registros` (
   `segunda_fecha_ro` date DEFAULT NULL,
   `fecha_tentativa_p` date DEFAULT NULL,
   `fecha_estimada_o_rs2` date DEFAULT NULL,
-  `comentarios_registro` text COLLATE utf8mb4_unicode_ci,
-  `comentarios_planificacion` text COLLATE utf8mb4_unicode_ci,
-  `gdp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `presentacion_comercial` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `presentacion_rs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `origen_rs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fabricante` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `para` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bajo_licencia` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comentarios_registro` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `comentarios_planificacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `gdp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `presentacion_comercial` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `presentacion_rs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `origen_rs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fabricante` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `para` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bajo_licencia` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_rectificacion` date DEFAULT NULL,
-  `principio_activo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `concentracion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `forma_farmaceutica_rs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `forma_farmaceutica_amornizada` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `formula_cc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `venta_ventanilla` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `condicion_venta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contacto_tecnico` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `vida_util` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `atq` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `condicion_almacenamiento` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linea_estucheria` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `principio_activo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `concentracion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `forma_farmaceutica_rs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `forma_farmaceutica_amornizada` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `formula_cc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `venta_ventanilla` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `condicion_venta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contacto_tecnico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vida_util` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `atq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `condicion_almacenamiento` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linea_estucheria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_inicio_comercializacion` date DEFAULT NULL,
-  `producto_licitacion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `registro_sanitario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `producto_licitacion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registro_sanitario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -161,9 +163,9 @@ INSERT INTO `maestro_registros` (`id`, `institucion`, `codigo_producto`, `descri
 --
 
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -189,11 +191,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `notas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
-  `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci,
-  `archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
+  `referencia` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha` date NOT NULL,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -214,11 +216,11 @@ INSERT INTO `notas` (`id`, `maestro_registro_id`, `referencia`, `descripcion`, `
 --
 
 CREATE TABLE `notificacions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
-  `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci,
-  `archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
+  `referencia` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha` date NOT NULL,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -239,12 +241,12 @@ INSERT INTO `notificacions` (`id`, `maestro_registro_id`, `referencia`, `descrip
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -257,12 +259,12 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `seguimiento_aprobados` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
   `fecha_aprobacion` date NOT NULL,
-  `estado_final` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `archivo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `observacion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado_final` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `observacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha_registro` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -283,20 +285,20 @@ INSERT INTO `seguimiento_aprobados` (`id`, `maestro_registro_id`, `fecha_aprobac
 --
 
 CREATE TABLE `seguimiento_rectificacions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
-  `responsable` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tipo_tramite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
+  `responsable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo_tramite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_ingreso` date DEFAULT NULL,
-  `codigo_misa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hoja_ruta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `motivo_rectificacion` text COLLATE utf8mb4_unicode_ci,
-  `agemed_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `codigo_misa` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hoja_ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `motivo_rectificacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `agemed_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `agemed_fecha` date DEFAULT NULL,
-  `megalabs_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `megalabs_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `megalabs_fecha` date DEFAULT NULL,
   `rs_fecha` date DEFAULT NULL,
-  `rs_nro_registro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rs_nro_registro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rs_fecha_recojo` date DEFAULT NULL,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -318,44 +320,44 @@ INSERT INTO `seguimiento_rectificacions` (`id`, `maestro_registro_id`, `responsa
 --
 
 CREATE TABLE `seguimiento_tramites` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `maestro_registro_id` bigint(20) UNSIGNED NOT NULL,
-  `responsable` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tipo_tramite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `maestro_registro_id` bigint UNSIGNED NOT NULL,
+  `responsable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo_tramite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_ingreso` date DEFAULT NULL,
-  `codigo_misa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hoja_ruta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ameged_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `codigo_misa` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hoja_ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ameged_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ameged_fecha` date DEFAULT NULL,
-  `megalabs_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `megalabs_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `megalabs_fecha` date DEFAULT NULL,
   `rs_fecha_aprobacion` date DEFAULT NULL,
-  `rs_nro_registro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rs_nro_registro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rs_fecha_recojo` date DEFAULT NULL,
-  `cpp_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cpp_carta` text COLLATE utf8mb4_unicode_ci,
-  `cpp_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cpp_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `muestra_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `muestra_carta` text COLLATE utf8mb4_unicode_ci,
-  `muestra_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `muestra_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `desplegado_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `desplegado_carta` text COLLATE utf8mb4_unicode_ci,
-  `desplegado_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `desplegado_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gmp_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gmp_carta` text COLLATE utf8mb4_unicode_ci,
-  `gmp_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gmp_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rl_estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rl_carta` text COLLATE utf8mb4_unicode_ci,
-  `rl_cite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rl_archivo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cpp_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cpp_carta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `cpp_cite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cpp_archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `muestra_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `muestra_carta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `muestra_cite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `muestra_archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desplegado_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desplegado_carta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `desplegado_cite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desplegado_archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gmp_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gmp_carta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `gmp_cite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gmp_archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rl_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rl_carta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `rl_cite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rl_archivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_aprobacion` date DEFAULT NULL,
-  `estado_final` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `archivo_aprobacion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `observacion` text COLLATE utf8mb4_unicode_ci,
+  `estado_final` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `archivo_aprobacion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `observacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `fecha_registro` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -377,20 +379,20 @@ INSERT INTO `seguimiento_tramites` (`id`, `maestro_registro_id`, `responsable`, 
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `usuario` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paterno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `materno` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ci` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ci_exp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `correo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fono` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cel` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` enum('ADMINISTRADOR','AUXILIAR') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paterno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `materno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ci` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ci_exp` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fono` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cel` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha_registro` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -402,7 +404,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `cel`, `tipo`, `foto`, `password`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', '', NULL, '0', '', '', NULL, '', '', 'ADMINISTRADOR', NULL, '$2y$10$cDSOdzTsMDQAfqcb6.WFtu40s.wmQ4Jl8poIwW69MSZnnedD3prKu', '2022-10-27', NULL, NULL),
-(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '22222', '777777', 'AUXILIAR', '1666903970_JPERES.jpg', '$2y$10$sh3kqQQ/YjWUCaKKEPofae.dfPWIgHsv2t8KE/OAYru5WJGMJugM2', '2022-10-27', '2022-10-27 20:52:22', '2022-11-02 15:58:04');
+(2, 'JPERES', 'JUAN', 'PERES', '', '1234', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '22222', '777777', 'VISITADOR MÉDICO', '1666903970_JPERES.jpg', '$2y$10$sh3kqQQ/YjWUCaKKEPofae.dfPWIgHsv2t8KE/OAYru5WJGMJugM2', '2022-10-27', '2022-10-27 20:52:22', '2023-11-08 00:32:57');
 
 --
 -- Índices para tablas volcadas
@@ -491,67 +493,67 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alertas`
 --
 ALTER TABLE `alertas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracions`
 --
 ALTER TABLE `configuracions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `maestro_registros`
 --
 ALTER TABLE `maestro_registros`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `notificacions`
 --
 ALTER TABLE `notificacions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `seguimiento_aprobados`
 --
 ALTER TABLE `seguimiento_aprobados`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `seguimiento_rectificacions`
 --
 ALTER TABLE `seguimiento_rectificacions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `seguimiento_tramites`
 --
 ALTER TABLE `seguimiento_tramites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

@@ -180,7 +180,7 @@ export default {
             enviando: false,
             textoBtn: "Generar Reporte",
             listFiltro: ["Todos", "Tipo de usuario"],
-            listTipos: ["ADMINISTRADOR", "AUXILIAR"],
+            listTipos: ["ADMINISTRADOR", "VISITADOR MÉDICO"],
             errors: [],
             listUnidades: [],
         };

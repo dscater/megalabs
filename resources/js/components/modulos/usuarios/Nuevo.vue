@@ -361,7 +361,7 @@ export default {
                 { value: "PD", label: "Pando" },
                 { value: "BN", label: "Beni" },
             ],
-            listRoles: ["ADMINISTRADOR", "AUXILIAR"],
+            listRoles: ["ADMINISTRADOR", "VISITADOR MÉDICO"],
             listUnidades: [],
             errors: [],
         };
