@@ -18,7 +18,11 @@
                                 <div class="row">
                                     <b-col lg="6" class="my-1">
                                         <div class="row">
-                                            <b-col sm="6" md="4">
+                                            <b-col sm="6" md="3" class="text-md"
+                                                >Total:
+                                                {{ totalRows }} registros</b-col
+                                            >
+                                            <b-col sm="6" md="3">
                                                 <b-form-select
                                                     align="right"
                                                     id="per-page-select"
@@ -29,7 +33,7 @@
                                             </b-col>
                                             <b-col
                                                 sm="6"
-                                                md="8"
+                                                md="6"
                                                 class="mr-auto"
                                                 v-if="perPage"
                                             >

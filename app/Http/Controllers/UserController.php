@@ -114,7 +114,6 @@ class UserController extends Controller
 
             'alertas.index',
 
-            'reportes.usuarios',
             'reportes.maestro_registro',
             'reportes.seguimiento_tramites',
             'reportes.seguimiento_aprobados',
